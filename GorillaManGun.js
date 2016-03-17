@@ -1,5 +1,12 @@
+//beginning of game function which will loop
+var game = function(){
+
 //ask for user choice
 var userChoice = prompt("Choose: Gorilla, Man, or Gun");
+while ((userChoice !== "Gorilla") && (userChoice !== "Gun") && (userChoice !== "Man")){
+    userChoice = prompt("Not one of our choices. \nChoose: Gorilla, Man, or Gun");
+}
+
 
 //make random number for computer choice
 var randomNumber = Math.floor( (Math.random() * 3) +1);
@@ -23,7 +30,7 @@ console.log("You chose " + userChoice);
 console.log("Computer chose " + compChoice);
 //find ties
 if (userChoice === compChoice) {
-console.log("You tie.")
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "TIE GAME!");
 }
 
 //compare user and comp choices
@@ -31,37 +38,49 @@ switch (userChoice) {
   case "Gorilla":
   switch (compChoice) {
     case "Man":
-      console.log("You Win!");
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "YOU WIN!");
       break;
     case "Gun":
-      console.log("Computer Wins!");
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "YOU LOSE!");
       break;
     default:
-  }    
+  }
     break;
   case "Man":
   switch (compChoice) {
     case "Gorilla":
-      console.log("Computer Wins!");
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "YOU LOSE!");
       break;
     case "Gun":
-      console.log("You Win!");
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "YOU WIN!");
       break;
     default:
-  }    
+  }
     break;
   case "Gun":
   switch (compChoice) {
     case "Gorilla":
-      console.log("You Win!");
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "YOU WIN!");
       break;
     case "Man":
-      console.log("Computer Wins!");
+      alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "YOU LOSE!");
       break;
     default:
-  }    
+  }
     break;
   default:
 }
+//asks to play again, if no loop ends
+playAgain = confirm("Do you want to play again");
+}
+//end of game function
 
 
+//starting questions
+var playAgain = confirm("Would you like to play Gorilla, Man, Gun?");
+
+//while loop
+while (playAgain) {
+    game();
+}
+alert("Thanks for playing!")

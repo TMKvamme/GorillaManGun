@@ -1,22 +1,24 @@
+//this is called by ryans html. this function contains everything
 var game = function(){
 
-
+//set scores to 0
 var userScore = 0;
 var compScore = 0;
 var tieScore = 0;
 
-//beginning of game function which will loop
+//beginning of play function which will loop
 var play = function(){
 
 //ask for user choice
 var userChoice = prompt("Choose: Gorilla, Man, or Gun");
 
-  userChoice = userChoice.charAt(0).toUpperCase() + userChoice.slice(1).toLowerCase();
+//set user choice to camel case
+userChoice = userChoice.charAt(0).toUpperCase() + userChoice.slice(1).toLowerCase();
 
+//if choice doesnt match ask again
 while ((userChoice !== "Gorilla") && (userChoice !== "Gun") && (userChoice !== "Man")){
     userChoice = prompt("Not one of our choices. \nChoose: Gorilla, Man, or Gun");
 }
-
 
 //make random number for computer choice
 var randomNumber = Math.floor( (Math.random() * 3) +1);
@@ -35,9 +37,7 @@ switch (randomNumber) {
     break;
   default:
 }
-//display choices
-console.log("You chose " + userChoice);
-console.log("Computer chose " + compChoice);
+
 //find ties
 if (userChoice === compChoice) {
       alert("You chose " + userChoice + ".\n" + "Computer chose " + compChoice + ".\n\n" + "TIE GAME!");
@@ -88,22 +88,26 @@ switch (userChoice) {
   default:
 }
 
+//show scores
 alert( "Wins: " + userScore + "\n" + "Loses: " + compScore + "\n" + "Ties: " + tieScore );
 
 //asks to play again, if no loop ends
 playAgain = confirm("Do you want to play again");
 }
-//end of game function
-
-
+//end of play function
 
 //starting questions
 var playAgain = confirm("Would you like to play Gorilla, Man, Gun?");
 
-//while loop
-while (playAgain) {
+if (playAgain) {
+  while (playAgain) {
     play();
+  }
+    alert("Thanks for playing!");
 }
-alert("Thanks for playing!");
+else {
+  alert("You must be too scared to play. See you when you are man enough.");
+}
 
+//end of game function
 }
